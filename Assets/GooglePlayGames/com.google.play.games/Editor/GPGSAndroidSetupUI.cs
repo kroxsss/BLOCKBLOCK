@@ -458,3 +458,21 @@ namespace GooglePlayGames.Editor
         }
     }
 }
+
+namespace Google
+{
+    public abstract class VersionHandler
+    {
+        public static void UpdateVersionedAssets(bool forceUpdate)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public static bool VerboseLoggingEnabled { get; set; }
+
+        public static void InvokeStaticMethod(object findClass, string menuresolve, object o) => throw new System.NotImplementedException();
+
+        public static object FindClass(string googleJarresolver, string googleplayservicesPlayservicesresolver) => throw new System.NotImplementedException();
+        public static bool Enabled { get; set; }
+    }
+}

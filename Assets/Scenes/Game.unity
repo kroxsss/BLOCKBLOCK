@@ -1696,6 +1696,7 @@ GameObject:
   - component: {fileID: 535686702}
   - component: {fileID: 535686701}
   - component: {fileID: 535686700}
+  - component: {fileID: 535686703}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1766,16 +1767,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1774335654}
-        m_TargetAssemblyTypeName: menubutton, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 535686703}
+        m_TargetAssemblyTypeName: Adcontrol, Assembly-CSharp
+        m_MethodName: ShowInterstitialAd
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &535686701
@@ -1816,6 +1817,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535686698}
   m_CullTransparentMesh: 1
+--- !u!114 &535686703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535686698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b56e6d63763bc41ad5b855f097b569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reklamgoster: 1
+  manager: {fileID: 1143974019}
+  menuButton: {fileID: 1774335654}
+  sceneName: MainMenu
 --- !u!1 &545017160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2103,7 @@ GameObject:
   - component: {fileID: 677117150}
   - component: {fileID: 677117149}
   - component: {fileID: 677117148}
+  - component: {fileID: 677117151}
   m_Layer: 5
   m_Name: TryAgainButton
   m_TagString: Untagged
@@ -2156,28 +2174,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1186605655}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1143974019}
+        m_TargetAssemblyTypeName: AdManager, Assembly-CSharp
+        m_MethodName: ShowInterstitialAd
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1774335654}
-        m_TargetAssemblyTypeName: menubutton, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &677117149
@@ -2218,6 +2224,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677117146}
   m_CullTransparentMesh: 1
+--- !u!114 &677117151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677117146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b56e6d63763bc41ad5b855f097b569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reklamgoster: 1
+  manager: {fileID: 1143974019}
+  menuButton: {fileID: 1774335654}
+  sceneName: Game
 --- !u!1 &692240432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,7 +2676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -444, y: 716}
+  m_AnchoredPosition: {x: -414, y: 716}
   m_SizeDelta: {x: 215, y: 213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &776009528
@@ -3426,6 +3448,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099933682}
   m_CullTransparentMesh: 1
+--- !u!1 &1143974018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143974020}
+  - component: {fileID: 1143974019}
+  m_Layer: 0
+  m_Name: ADManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1143974019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143974018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2835790d824de20468a0509a9dd5ff4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1143974020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143974018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.54237944, y: -5.78, z: 289.34656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1186605655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,3 +5701,4 @@ SceneRoots:
   - {fileID: 2037237766}
   - {fileID: 1502367598}
   - {fileID: 676233005}
+  - {fileID: 1143974020}

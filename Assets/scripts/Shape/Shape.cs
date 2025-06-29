@@ -40,7 +40,9 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void Start()
     {
-        _transform.DOLocalMove(_startposition, 0.3f).SetEase(Ease.OutBack);
+        _transform.DOLocalMove(_startposition, 0.3f)
+            .SetEase(Ease.OutBack)
+            .SetUpdate(true);
     }
 
     private void OnEnable()
@@ -113,7 +115,9 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public void RequestNewShape(ShapeData shapeData)
     {
         _transform.localPosition = new Vector3(_startposition.x, -500f, 0);
-        _transform.DOLocalMove(_startposition, 1f).SetEase(Ease.OutBack);
+        _transform.DOLocalMove(_startposition, 1f)
+            .SetEase(Ease.OutBack)
+            .SetUpdate(true); // Bu da zaman bağımsız olsun
         CreateShape(shapeData);
     }
 
