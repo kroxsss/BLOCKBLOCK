@@ -1,87 +1,65 @@
-using GoogleMobileAds.Api;
-using GoogleMobileAds.Ump.Api;
 using UnityEngine;
+using GoogleMobileAds.Api;
 using System;
 
-public class AdManager : MonoBehaviour
+public class InterstitialAdManager : MonoBehaviour
 {
-    private BannerView bannerView;
     private InterstitialAd interstitialAd;
 
-    void Start()
+    // Test reklam ID (kendi AdMob ID’inle değiştir)
+    private string adUnitId = "ca-app-pub-7204731156645232/5372093595";
+
+    private void Start()
     {
-        MobileAds.Initialize(initStatus =>
+        // AdMob başlatma
+        MobileAds.Initialize(initStatus => { });
+
+        // İlk reklamı yükle
+        LoadInterstitialAd();
+    }
+
+    private void LoadInterstitialAd()
+    {
+        Debug.Log("Interstitial reklam yükleniyor...");
+
+        // Önceki reklamı temizle
+        if (interstitialAd != null)
         {
-            Debug.Log("AdMob initialized");
-            LoadBannerAd();
-            LoadInterstitialAd();
-        });
-    }
+            interstitialAd.Destroy();
+            interstitialAd = null;
+        }
 
-    #region Banner
-
-    public void LoadBannerAd()
-    {
-#if UNITY_ANDROID
-        string bannerAdUnitId = "ca-app-pub-7204731156645232/7889627487";
-#elif UNITY_IOS
-        string bannerAdUnitId = "ca-app-pub-7204731156645232/7889627487";
-#else
-        string bannerAdUnitId = "unexpected_platform";
-#endif
-
-        AdSize adSize = AdSize.Banner;
-        bannerView = new BannerView(bannerAdUnitId, adSize, AdPosition.Bottom);
-
+        // Yeni SDK’da direkt böyle
         AdRequest adRequest = new AdRequest();
-        bannerView.LoadAd(adRequest);
-    }
 
-    public void HideBanner()
-    {
-        bannerView?.Hide();
-    }
-
-    public void ShowBanner()
-    {
-        bannerView?.Show();
-    }
-
-    #endregion
-
-    #region Interstitial
-
-    public void LoadInterstitialAd()
-    {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-7204731156645232/5372093595";
-#elif UNITY_IOS
-        string adUnitId = "ca-app-pub-7204731156645232/5372093595";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-        InterstitialAd.Load(adUnitId, new AdRequest(), (InterstitialAd ad, LoadAdError error) =>
+        // Reklamı yükle
+        InterstitialAd.Load(adUnitId, adRequest, (InterstitialAd ad, LoadAdError error) =>
         {
             if (error != null || ad == null)
             {
-                Debug.LogError("Interstitial failed to load: " + error);
+                Debug.LogError("Interstitial reklam yüklenemedi: " + error);
                 return;
             }
 
+            Debug.Log("Interstitial reklam yüklendi.");
             interstitialAd = ad;
-            Debug.Log("Interstitial loaded");
+
+            // Eventler
+            interstitialAd.OnAdFullScreenContentOpened += () =>
+            {
+                Debug.Log("Reklam açıldı.");
+            };
 
             interstitialAd.OnAdFullScreenContentClosed += () =>
             {
-                Debug.Log("Interstitial kapandı");
-                Time.timeScale = 1; // Oyun durmuşsa devam et
-                LoadInterstitialAd(); // Tekrar yükle
+                Debug.Log("Reklam kapandı. Yeni reklam yükleniyor...");
+                LoadInterstitialAd(); // reklam kapandıktan sonra yeni reklam yükle
             };
 
-            interstitialAd.OnAdFullScreenContentFailed += (AdError error) =>
+            interstitialAd.OnAdFullScreenContentFailed += (AdError err) =>
             {
-                Debug.LogError("Interstitial gösterilemedi: " + error.GetMessage());
+                Debug.LogError("Reklam gösterilemedi: " + err);
+                LoadInterstitialAd(); // hata olursa tekrar yükle
             };
         });
     }
@@ -90,16 +68,12 @@ public class AdManager : MonoBehaviour
     {
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
-            Time.timeScale = 0; // Oyun duruyorsa kullan
             interstitialAd.Show();
+            Debug.Log("Interstitial reklam gösterildi.");
         }
         else
         {
-            Debug.Log("Interstitial henüz hazır değil.");
+            Debug.Log("Interstitial reklam hazır değil.");
         }
     }
-
-    #endregion
 }
-
-

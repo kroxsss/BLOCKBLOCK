@@ -1,5 +1,5 @@
-lastUpgrade=20000
-proj.pluginVersion=2.0.0
+lastUpgrade=20100
+proj.pluginVersion=2.1.0
 proj.AppId=507243514233
 and.BundleId=com.krox.block
 proj.classDir=Assets%2fscripts%2fGPGS

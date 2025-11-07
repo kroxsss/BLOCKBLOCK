@@ -1,25 +1,25 @@
+using GoogleMobileAds.Api;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Adcontrol : MonoBehaviour
 {
-    public bool reklamgoster = true;
-    public AdManager manager;
+    public bool displayAd = true;
+    public InterstitialAdManager InterstitialAd;
     public MenuButton menuButton;
-    public string sceneName ="Game";
+    public string sceneName = "Game";
 
     public void ShowInterstitialAd()
     {
-        if (reklamgoster==true)
+        if (displayAd)
         {
-            manager.ShowInterstitialAd();
-            reklamgoster = false;
+            InterstitialAd.ShowInterstitialAd();
+        }
+        else
+        {
+            menuButton.LoadScene(sceneName);
+        }
 
-        }
-        else if (reklamgoster == false)
-        {
-            menuButton.LoadScene(name=sceneName);
-            reklamgoster = true;
-        }
-        
+        displayAd = !displayAd;
     }
 }

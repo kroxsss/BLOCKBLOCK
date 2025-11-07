@@ -26,6 +26,5 @@ public static class GPGSIds
 {
         public const string leaderboard_blockblock_master = "CgkI-ZLH0OEOEAIQAQ"; // <GPGSID>
 
-        public static string leaderboard_leaders_in_smoketesting { get; set; }
 }
 

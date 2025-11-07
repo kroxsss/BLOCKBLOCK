@@ -351,7 +351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00000047684, y: -121}
+  m_AnchoredPosition: {x: 0.00000047684, y: -99}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180617332
@@ -1829,8 +1829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b56e6d63763bc41ad5b855f097b569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reklamgoster: 1
-  manager: {fileID: 1143974019}
+  displayAd: 1
+  InterstitialAd: {fileID: 1143974019}
   menuButton: {fileID: 1774335654}
   sceneName: MainMenu
 --- !u!1 &545017160
@@ -2174,8 +2174,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1143974019}
-        m_TargetAssemblyTypeName: AdManager, Assembly-CSharp
+      - m_Target: {fileID: 677117151}
+        m_TargetAssemblyTypeName: Adcontrol, Assembly-CSharp
         m_MethodName: ShowInterstitialAd
         m_Mode: 1
         m_Arguments:
@@ -2236,8 +2236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b56e6d63763bc41ad5b855f097b569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reklamgoster: 1
-  manager: {fileID: 1143974019}
+  displayAd: 1
+  InterstitialAd: {fileID: 1143974019}
   menuButton: {fileID: 1774335654}
   sceneName: Game
 --- !u!1 &692240432
@@ -4202,7 +4202,7 @@ RectTransform:
   m_GameObject: {fileID: 1693047049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.07, y: 1, z: 1}
+  m_LocalScale: {x: 1.07, y: 1.02, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 574173397}
@@ -4210,7 +4210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: 1080, y: 139.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1693047051
@@ -4226,7 +4226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5622641, g: 0.5622641, b: 0.5622641, a: 1}
+  m_Color: {r: 0.11597718, g: 0.6754716, b: 0.64795554, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4278,14 +4278,14 @@ RectTransform:
   m_GameObject: {fileID: 1703664909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.05, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180617331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -18.065}
+  m_AnchoredPosition: {x: 0.000000023842, y: -18.065}
   m_SizeDelta: {x: 315.39, y: 136.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1703664911
@@ -4301,7 +4301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+  m_Color: {r: 0, g: 0.8731129, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4483,14 +4483,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.117349245, b: 0.19245279, a: 1}
+  m_Color: {r: 0.4339623, g: 0.4282307, b: 0.4282307, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4243032537698770109, guid: 596102529803b294c8ab3f55f5948629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5284,7 +5284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -163, y: -207}
+  m_AnchoredPosition: {x: -163, y: -111}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105036580
